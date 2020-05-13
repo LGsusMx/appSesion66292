@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons  slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="frm-inicio/letras"></ion-back-button>
     </ion-buttons>
     <ion-title>{{CUserName}}</ion-title>
@@ -8,45 +8,66 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col style="text-align: center; ">
-      <ion-item>
-        <ion-label position="fixed">
-          Correo
-        </ion-label>
-        <ion-label  position="fixed" class="ion-text-wrap">{{user.correo}}</ion-label>
-      </ion-item>
-      <ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Datos de la cuenta
+      </ion-card-title>
+      <ion-card-subtitle>
+        Verifique que se encuentren registrados todos sus datos
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item disabled="true">
+        <ion-icon name="mail"></ion-icon>
+        <p>  </p>
         <ion-label>
-          Nombre
+          {{user.correo}}
         </ion-label>
-        <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-label>
-          Apellido
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="user.apellido"></ion-input>
+        <ion-icon name="person"></ion-icon>
+        <p>  </p>
+        <ion-input
+          type="text"
+          placeholder="Nombre"
+          [(ngModel)]="user.nombre"
+        ></ion-input>
+        <ion-input
+          type="text"
+          placeholder="Apellido"
+          [(ngModel)]="user.apellido"
+        ></ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-label>
-          Genero
-        </ion-label>
-        <ion-select [(ngModel)]="user.sexo" placeholder="Select one" >
-          <ion-select-option value="Masculino"> Masculino </ion-select-option>
+        <ion-icon name="male-female"></ion-icon>
+        <p>  </p>
+        <ion-label>Género</ion-label>
+        <ion-select [(ngModel)]="user.sexo" placeholder="Seleccionar">
+          <ion-select-option value="Masculino">
+            Masculino
+          </ion-select-option>
           <ion-select-option value="Femenino"> Femenino </ion-select-option>
         </ion-select>
       </ion-item>
 
-      </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col style="text-align: center">
-          <ion-button shape="round" color="success" (click)='onGuardar()'>Guardar</ion-button>
-        </ion-col>
-        <ion-col style="text-align: center">
-          <ion-button shape="round" color="danger" (click)="onSalir()">Salir</ion-button>
-        </ion-col>
-        
-      </ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <ion-button shape="round" color="success" (click)="onGuardar()" expand="block">
+              Guardar
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button shape="round" color="danger" (click)="onSalir()" expand="block">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
