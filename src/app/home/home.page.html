@@ -1,20 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title style="text-align: center; ">
+      Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-row>
+    <ion-col style="text-align: center; ">
+      <br />
+      <br/>
+      <ion-label *ngIf=isSaucex>
+        {{Textowo}}
+      </ion-label>
+      
+      <br />
+      <br/>
+      <ion-item>
+        <ion-label>
+          Correo:
+        </ion-label>
+        <ion-input
+          placeholder="example@domain.com"
+          type="text"
+          [(ngModel)]="user.correo"
+        ></ion-input>
+      </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      <ion-item (mouseenter)='onEntroMouse()'  (mouseleave)='onSalioMouse()' >
+        <ion-label>
+          Password:
+        </ion-label>
+        <ion-input
+          placeholder="*********"
+          type="password"
+          [(ngModel)]="user.password"
+        ></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="text-align: center">
+      <ion-button shape="round" (click)="onIniciar()"
+        >Iniciar Sesion</ion-button
+      >
+      <br />
+      <ion-button
+        shape="round"
+        [routerLink]="['/frm-registro']"
+        routerLinkActive="router-link-active"
+        >Registrarse</ion-button
+      >
+    </ion-col>
+  </ion-row>
 </ion-content>

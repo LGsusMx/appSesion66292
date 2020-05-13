@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col style="text-align: center; ">
+      <ion-item>
+        <ion-label>
+          Correo
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Password
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      </ion-col>
+      </ion-row>
+    
+    <ion-row>
+      <ion-col style="text-align: center">
+        <ion-button shape="round" (click)='onRegistrar()'>Registrar</ion-button>
+        <br />
+        <ion-button
+          shape="round"
+          [routerLink]="['/home']"
+          routerLinkActive="router-link-active"
+          >Iniciar Sesion</ion-button
+        >
+      </ion-col>
+    </ion-row>
+</ion-content>

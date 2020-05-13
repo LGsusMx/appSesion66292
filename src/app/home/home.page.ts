@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router} from '@angular/router';
+import {AuthService} from '../service/auth.service';
+import {usuario} from '../shared/usuario.class';
+
 
 @Component({
   selector: 'app-home',
@@ -6,7 +10,23 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  Textowo = 'inicio';
+  isSaucex = true;
+  user: usuario = new usuario();
+  constructor(private authSvc: AuthService, private router: Router) {}
 
-  constructor() {}
-
+  async onIniciar(){
+    const user = await this.authSvc.onIniciar(this.user);
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user.user.email));
+      localStorage.setItem('cUId', JSON.stringify(user.user.uid));
+      this.router.navigateByUrl('frm-inicio');
+    }
+  }
+  onEntroMouse(){
+    this.isSaucex = false;
+  }
+  onSalioMouse(){
+    this.isSaucex = true;
+  }
 }

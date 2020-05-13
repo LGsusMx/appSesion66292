@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar style="text-align: center;">
+    <ion-title >Animales</ion-title>
+    <ion-label >Bienvenido {{CUserName}}</ion-label>
+  </ion-toolbar>
+</ion-header>
+<ion-fab vertical="top" horizontal="end"  slot="fixed">
+  <ion-fab-button [routerLink]="['/user-profile']"
+  routerLinkActive="router-link-active" color="warning" size="small">
+    <ion-icon name="person-circle"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let animal of animales">
+        <ion-card (click)="reproducitSonido(animal)">
+          <ion-img  [src]= "animal.imagen">
+
+          </ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end"   >
+    <ion-fab-button [routerLink]="['/objeto-alteracion/animal']"
+    routerLinkActive="router-link-active" color="success" size="small">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

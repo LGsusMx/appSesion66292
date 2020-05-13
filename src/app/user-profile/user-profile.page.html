@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons  slot="start">
+      <ion-back-button defaultHref="frm-inicio/letras"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{CUserName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col style="text-align: center; ">
+      <ion-item>
+        <ion-label position="fixed">
+          Correo
+        </ion-label>
+        <ion-label  position="fixed" class="ion-text-wrap">{{user.correo}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Nombre
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Apellido
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Genero
+        </ion-label>
+        <ion-select [(ngModel)]="user.sexo" placeholder="Select one" >
+          <ion-select-option value="Masculino"> Masculino </ion-select-option>
+          <ion-select-option value="Femenino"> Femenino </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align: center">
+          <ion-button shape="round" color="success" (click)='onGuardar()'>Guardar</ion-button>
+        </ion-col>
+        <ion-col style="text-align: center">
+          <ion-button shape="round" color="danger" (click)="onSalir()">Salir</ion-button>
+        </ion-col>
+        
+      </ion-row>
+</ion-content>
