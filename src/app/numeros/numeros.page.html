@@ -1,13 +1,11 @@
 <ion-header>
-  
   <ion-toolbar style="text-align: center;">
-    <ion-title >Paises</ion-title>
-    <ion-label >Bienvenido {{CUserName}}</ion-label>
+    <ion-title>Paises</ion-title>
+    <ion-label>Bienvenido {{CUserName}}</ion-label>
   </ion-toolbar>
 </ion-header>
-<ion-fab vertical="top" horizontal="end"  slot="fixed">
-  <ion-fab-button [routerLink]="['/user-profile']"
-  routerLinkActive="router-link-active" color="warning" size="small">
+<ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="['/user-profile']" routerLinkActive="router-link-active" color="warning" size="small">
     <ion-icon name="person-circle"></ion-icon>
   </ion-fab-button>
 </ion-fab>
@@ -16,21 +14,17 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let pais of paises">
-        <ion-card  (mouseenter)='onEntroMouse(pais)'  (mouseleave)='onSalioMouse(pais)' >
+        <ion-card (mouseenter)="onEntroMouse(pais)" (mouseleave)="onSalioMouse(pais)">
           <ion-label>{{pais.nombre}}</ion-label>
-          <ion-img (click)="reproducitSonido(pais.sonido)" [src]= "pais.imagen">
-
-          </ion-img>
-          <ion-button *ngIf="pais.oculto"  [routerLink]="['/objeto-alteracion/pais/'+pais.id]"
-          routerLinkActive="router-link-active">Modificar</ion-button>
+          <ion-img (click)="reproducitSonido(pais.sonido)" [src]="pais.imagen"> </ion-img>
+          <ion-button *ngIf="pais.oculto" [routerLink]="['/objeto-alteracion/pais/'+pais.id]" routerLinkActive="router-link-active">Modificar</ion-button>
           <ion-button *ngIf="pais.oculto" (click)="OnEliminar(pais)">Eliminar</ion-button>
         </ion-card>
-      </ion-col> 
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-fab vertical="bottom" horizontal="end"   >
-    <ion-fab-button [routerLink]="['/objeto-alteracion/pais/0']"
-    routerLinkActive="router-link-active" color="success" size="small">
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink]="['/objeto-alteracion/pais/0']" routerLinkActive="router-link-active" color="success" size="small">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
