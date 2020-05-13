@@ -1,31 +1,56 @@
 <ion-header>
-  <ion-toolbar style="text-align: center;">
-    <ion-title>Paises</ion-title>
-    <ion-label>Bienvenido {{CUserName}}</ion-label>
+  <ion-toolbar>
+    <br />
+    <ion-title>           Bienvenido {{CUserName}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-fab vertical="top" horizontal="end" slot="fixed">
-  <ion-fab-button [routerLink]="['/user-profile']" routerLinkActive="router-link-active" color="warning" size="small">
-    <ion-icon name="person-circle"></ion-icon>
+<ion-fab vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button [routerLink]="['/user-profile']" routerLinkActive="router-link-active" size="small">
+    <ion-icon name="person"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
-<ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let pais of paises">
-        <ion-card (mouseenter)="onEntroMouse(pais)" (mouseleave)="onSalioMouse(pais)">
-          <ion-label>{{pais.nombre}}</ion-label>
-          <ion-img (click)="reproducitSonido(pais.sonido)" [src]="pais.imagen"> </ion-img>
-          <ion-button *ngIf="pais.oculto" [routerLink]="['/objeto-alteracion/pais/'+pais.id]" routerLinkActive="router-link-active">Modificar</ion-button>
-          <ion-button *ngIf="pais.oculto" (click)="OnEliminar(pais)">Eliminar</ion-button>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content>
+  <ion-card>
+    <ion-card-header style="text-align: center;">
+      <ion-card-title>Países</ion-card-title>
+      <ion-card-subtitle>
+        Banderas y canciones representativas
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let pais of paises">
+          <ion-card (mouseenter)="onEntroMouse(pais)" (mouseleave)="onSalioMouse(pais)">
+            <ion-img [src]="pais.imagen" style="height: 90px;"></ion-img>
+            <ion-card-header style="text-align: center;">
+              <ion-card-title>
+                {{pais.nombre}}
+              </ion-card-title>
+              <ion-card-subtitle>
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button fill="outline" *ngIf="pais.oculto" expand="block" shape="round" (click)="reproducitSonido(pais.sonido)">
+                <ion-icon name="play-circle"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" *ngIf="pais.oculto" color="success" expand="block" shape="round" [routerLink]="['/objeto-alteracion/pais/'+pais.id]">
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" *ngIf="pais.oculto" color="danger" expand="block" shape="round" (click)="OnEliminar(pais)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
   <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button [routerLink]="['/objeto-alteracion/pais/0']" routerLinkActive="router-link-active" color="success" size="small">
-      <ion-icon name="add"></ion-icon>
+    <ion-fab-button [routerLink]="['/objeto-alteracion/pais/0']" color="success" color="success">
+      <ion-icon name="duplicate" size="large"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
