@@ -1,35 +1,64 @@
 <ion-header>
-  <ion-toolbar style="text-align: center;">
-    <ion-title >Animales</ion-title>
-    <ion-label >Bienvenido {{CUserName}}</ion-label>
+  <ion-toolbar>
+    <br />
+    <ion-title>           Bienvenido {{CUserName}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-fab vertical="top" horizontal="end"  slot="fixed">
-  <ion-fab-button [routerLink]="['/user-profile']"
-  routerLinkActive="router-link-active" color="warning" size="small">
-    <ion-icon name="person-circle"></ion-icon>
+<ion-fab vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button [routerLink]="['/user-profile']" routerLinkActive="router-link-active" size="small">
+    <ion-icon name="person"></ion-icon>
   </ion-fab-button>
 </ion-fab>
-<ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let animal of animales">
-        <ion-card  (mouseenter)='onEntroMouse(animal)'  (mouseleave)='onSalioMouse(animal)' >
-          <ion-label>{{animal.nombre}}</ion-label>
-          <ion-img (click)="reproducitSonido(animal.sonido)" [src]= "animal.imagen">
 
-          </ion-img>
-          <ion-button *ngIf="animal.oculto"  [routerLink]="['/objeto-alteracion/animal/'+animal.id]"
-          routerLinkActive="router-link-active">Modificar</ion-button>
-          <ion-button *ngIf="animal.oculto" (click)="OnEliminar(animal)">Eliminar</ion-button>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-fab vertical="bottom" horizontal="end"   >
-    <ion-fab-button [routerLink]="['/objeto-alteracion/animal/0']"
-    routerLinkActive="router-link-active" color="success" size="small">
-      <ion-icon name="add"></ion-icon>
+<ion-content>
+  <ion-card>
+    <ion-card-header style="text-align: center;">
+      <ion-card-title>Animales</ion-card-title>
+      <ion-card-subtitle>
+        Iralos nomas bien bonitos
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let animal of animales">
+          <ion-card (mouseenter)="onEntroMouse(animal)" (mouseleave)="onSalioMouse(animal)">
+            <ion-img [src]="animal.imagen" style="height: 90px;"></ion-img>
+            <ion-card-header style="text-align: center;">
+              <ion-card-title>
+                {{animal.nombre}}
+              </ion-card-title>
+              <ion-card-subtitle>
+                <ion-icon name="ellipsis-horizontal"></ion-icon>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button fill="outline" *ngIf="animal.oculto" expand="block" shape="round" (click)="reproducitSonido(animal.sonido)">
+                <ion-icon name="play-circle"></ion-icon>
+              </ion-button>
+              <ion-button
+                fill="outline"
+                *ngIf="animal.oculto"
+                color="success"
+                expand="block"
+                shape="round"
+                [routerLink]="['/objeto-alteracion/animal/'+animal.id]"
+              >
+                <ion-icon name="create"></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" *ngIf="animal.oculto" color="danger" expand="block" shape="round" (click)="OnEliminar(animal)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink]="['/objeto-alteracion/animal/0']" color="success" routerLinkActive="router-link-active">
+      <ion-icon name="duplicate" size="large"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

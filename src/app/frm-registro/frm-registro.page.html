@@ -10,38 +10,45 @@
 <ion-content>
   <ion-card>
     <img src="https://miro.medium.com/max/2800/1*9iZzrgfMKngf18KDIUYKRw.jpeg" />
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <h1>Registre sus datos</h1>
+      </ion-col>
+    </ion-row>
+    
+    <ion-card-content>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <ion-input
+            type="text"
+            [(ngModel)]="user.correo"
+            placeholder="example@domain.com"
+            style="text-align: center;"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed"></ion-icon>
+          <ion-input
+            type="password"
+            [(ngModel)]="user.password"
+            placeholder="**********"
+            style="text-align: center;"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-button
+      fill="outline"
+      color="success"
+      shape="round"
+      (click)="onRegistrar()"
+      expand="block"
+    >
+      Registrar cuenta
+    </ion-button>
+    </ion-card-content>
   </ion-card>
-
-  <ion-row>
-    <ion-col style="text-align: center;">
-      <h1>Registre sus datos</h1>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col style="text-align: center;">
-      <ion-item>
-        <ion-icon name="mail"></ion-icon>
-        <ion-input
-          type="text"
-          [(ngModel)]="user.correo"
-          placeholder="example@domain.com"
-          style="text-align: center;"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="lock-closed"></ion-icon>
-        <ion-input
-          type="password"
-          [(ngModel)]="user.password"
-          placeholder="**"
-          style="text-align: center;"
-        ></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-
-  <ion-button shape="round" (click)="onRegistrar()" expand="block"
-    >Registrar cuenta</ion-button
-  >
 </ion-content>
