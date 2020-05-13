@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons  slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="frm-inicio/letras"></ion-back-button>
     </ion-buttons>
     <ion-title>{{Accion}} {{CUObject}}</ion-title>
@@ -8,33 +8,66 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col style="text-align: center; ">
-      <ion-item>
-        <ion-label position="fixed">
-          Nombre
-        </ion-label>
-        <ion-input [(ngModel)]="nombre" type="text" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Imagen
-        </ion-label>
-        <ion-input (change)="onImageSelected($event)"  accept="image/*" type="file" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          Sonido
-        </ion-label>
-        <ion-input (change)="onSoundSelected($event)" type="file" accept="audio/*" >asasa</ion-input>
-      </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Ingrese los recursos necesarios
+      </ion-card-title>
+      <ion-card-subtitle>
+        Esto permitirá modificar o agregar elementos
+      </ion-card-subtitle>
+    </ion-card-header>
 
-      </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col style="text-align: center">
-          <ion-button shape="round" color="success" (click)='onGuardar()'>{{Accion}}</ion-button>
-        </ion-col>
-        
-      </ion-row>
+    <ion-card-content>
+      <ion-list>
+        <!--Nombre del archivo-->
+        <ion-list-header>
+          <h1>
+            <ion-icon name="document-text"></ion-icon>
+            Nombre del recurso
+          </h1>
+        </ion-list-header>
+        <ion-item>
+          <ion-icon
+            name="ellipsis-horizontal"
+            style="margin-right: 5px;"
+          ></ion-icon>
+          <h1>
+            <ion-input [(ngModel)]="nombre" type="text" required></ion-input>
+          </h1>
+        </ion-item>
+
+        <!--Selector de archivo de audio-->
+        <ion-list-header>
+          <h1>
+            <ion-icon name="musical-notes"></ion-icon>
+            Audio
+          </h1>
+        </ion-list-header>
+        <ion-input
+          (change)="onSoundSelected($event)"
+          type="file"
+          accept="audio/*"
+          >
+        </ion-input>
+
+        <!--Selector de archivo de imagen-->
+        <ion-list-header>
+          <h1>
+            <ion-icon name="image"></ion-icon>
+            Imagen
+          </h1>
+        </ion-list-header>
+        <ion-input
+          (change)="onImageSelected($event)"
+          accept="image/*"
+          type="file"
+        ></ion-input>
+      </ion-list>
+
+      <ion-button shape="round" color="success" fill="outline" expand="block" (click)="onGuardar()">
+        {{Accion}}
+        </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
