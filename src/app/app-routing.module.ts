@@ -29,7 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
   },
   {
-    path: 'objeto-alteracion/:id',
+    path: 'objeto-alteracion/:id/:modificacion',
     loadChildren: () => import('./objeto-alteracion/objeto-alteracion.module').then( m => m.ObjetoAlteracionPageModule)
   },
 ];

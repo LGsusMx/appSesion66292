@@ -161,10 +161,9 @@ export class AuthService {
       }
       return this.firestore.collection(tipo).add(toSave);
     }
-    deleteStore(file, tipo){
-      let key = file.key;
-      let storagePath = file.name;
-      this.db.list(tipo).remove(key);
-      return this.afStorage.ref('filesPa/sound/' + storagePath).delete();
+    deleteStore(file,tipo){
+      this.firestore.collection(tipo).doc(file.id).delete();
+      this.afStorage.ref(tipo + '/img/' + file.nombre).delete();
+      return this.afStorage.ref(tipo + '/sound/' + file.nombre).delete();
     }
   }

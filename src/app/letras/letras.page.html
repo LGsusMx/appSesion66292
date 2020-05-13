@@ -14,16 +14,20 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let animal of animales">
-        <ion-card (click)="reproducitSonido(animal)">
-          <ion-img  [src]= "animal.imagen">
+        <ion-card  (mouseenter)='onEntroMouse(animal)'  (mouseleave)='onSalioMouse(animal)' >
+          <ion-label>{{animal.nombre}}</ion-label>
+          <ion-img (click)="reproducitSonido(animal.sonido)" [src]= "animal.imagen">
 
           </ion-img>
+          <ion-button *ngIf="animal.oculto"  [routerLink]="['/objeto-alteracion/animal/'+animal.id]"
+          routerLinkActive="router-link-active">Modificar</ion-button>
+          <ion-button *ngIf="animal.oculto" (click)="OnEliminar(animal)">Eliminar</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end"   >
-    <ion-fab-button [routerLink]="['/objeto-alteracion/animal']"
+    <ion-fab-button [routerLink]="['/objeto-alteracion/animal/0']"
     routerLinkActive="router-link-active" color="success" size="small">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

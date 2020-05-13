@@ -3,7 +3,7 @@
     <ion-buttons  slot="start">
       <ion-back-button defaultHref="frm-inicio/letras"></ion-back-button>
     </ion-buttons>
-    <ion-title>Nuevo {{CUObject}}</ion-title>
+    <ion-title>{{Accion}} {{CUObject}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,14 +26,14 @@
         <ion-label>
           Sonido
         </ion-label>
-        <ion-input (change)="onSoundSelected($event)" type="file" accept="audio/*" ></ion-input>
+        <ion-input (change)="onSoundSelected($event)" type="file" accept="audio/*" >asasa</ion-input>
       </ion-item>
 
       </ion-col>
       </ion-row>
       <ion-row>
         <ion-col style="text-align: center">
-          <ion-button shape="round" color="success" (click)='onGuardar()'>Agregar</ion-button>
+          <ion-button shape="round" color="success" (click)='onGuardar()'>{{Accion}}</ion-button>
         </ion-col>
         
       </ion-row>

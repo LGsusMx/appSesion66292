@@ -11,34 +11,11 @@ export class LetrasPage implements AfterViewInit {
   collection = 'usuarios';
   CUserName = '-----------';
   cUId;
-  animales = [{
-    nombre: 'Aguila',
-    imagen: '../../assets/Images/aguila.jpg',
-    audio: '../../assets/Sounds/Aguila.m4a'
-
-  },
-  {
-    nombre: 'Lobo',
-    imagen: '../../assets/Images/lobo.jpg',
-    audio: '../../assets/Sounds/Lobo.m4a'
-
-  },
-  {
-    nombre: 'Gallina',
-    imagen: '../../assets/Images/gallina.jpg',
-    audio: '../../assets/Sounds/Gallo.m4a'
-
-  },
-  {
-    nombre: 'Gato',
-    imagen: '../../assets/Images/gato.jpg',
-    audio: '../../assets/Sounds/Gato.m4a'
-
-  }
+  animales = [
   ];
   reproducitSonido(animal) {
     let sonido = new Audio();
-    sonido.src = animal.audio;
+    sonido.src = animal;
     sonido.load();
     sonido.play();
   }
@@ -51,8 +28,42 @@ export class LetrasPage implements AfterViewInit {
       if (result.payload.get('nombre') !== undefined) {
         this.CUserName = result.payload.data()['nombre'];
       }
+      this.loadSometing();
+    });
+  }
+  loadSometing(){
+    this.firebaseService.read_students('filesAn').subscribe((data)=>{
+      this.animales = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          nombre: e.payload.doc.data()['name'],
+          imagen: e.payload.doc.data()['urlIm'],
+          sonido: e.payload.doc.data()['urlSound'],
+        };
+      })
+    });
+    
+  }
+  onEntroMouse(element){
+    this.animales.map(function(dato){
+      if(dato === element){
+        dato.oculto = true;
+      }
+      
 
     });
+  }
+  onSalioMouse(element){
+    this.animales.map(function(dato){
+      if(dato === element){
+        dato.oculto = false;
+      }
+      
+
+    });
+  }
+  OnEliminar(objeto){
+    this.firebaseService.deleteStore(objeto,'filesAn');
   }
 
 }

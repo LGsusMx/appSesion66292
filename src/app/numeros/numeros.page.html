@@ -16,19 +16,20 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let pais of paises">
-        <ion-card (click)="reproducitSonido(pais)">
-          <ion-img  [src]= "pais.imagen">
+        <ion-card  (mouseenter)='onEntroMouse(pais)'  (mouseleave)='onSalioMouse(pais)' >
+          <ion-label>{{pais.nombre}}</ion-label>
+          <ion-img (click)="reproducitSonido(pais.sonido)" [src]= "pais.imagen">
 
           </ion-img>
+          <ion-button *ngIf="pais.oculto"  [routerLink]="['/objeto-alteracion/pais/'+pais.id]"
+          routerLinkActive="router-link-active">Modificar</ion-button>
+          <ion-button *ngIf="pais.oculto" (click)="OnEliminar(pais)">Eliminar</ion-button>
         </ion-card>
       </ion-col> 
-
-      
-
     </ion-row>
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end"   >
-    <ion-fab-button [routerLink]="['/objeto-alteracion/pais']"
+    <ion-fab-button [routerLink]="['/objeto-alteracion/pais/0']"
     routerLinkActive="router-link-active" color="success" size="small">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

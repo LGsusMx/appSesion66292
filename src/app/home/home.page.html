@@ -1,56 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="text-align: center; ">
-      Login
+    <ion-title style="text-align: center;">
+      Bienvenido
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
+  <ion-card>
+    <img
+      src="https://ionicframework.com/docs/v3/img/meta/ionic-framework-og.png"
+    />
+  </ion-card>
+
   <ion-row>
-    <ion-col style="text-align: center; ">
-      <br />
-      <br/>
-      <ion-label *ngIf=isSaucex>
-        {{Textowo}}
-      </ion-label>
-      
-      <br />
-      <br/>
+    <ion-col style="text-align: center;">
+      <h1>Inicie sesión</h1>
       <ion-item>
-        <ion-label>
-          Correo:
-        </ion-label>
+        <ion-icon name="mail"></ion-icon>
         <ion-input
           placeholder="example@domain.com"
           type="text"
           [(ngModel)]="user.correo"
+          style="text-align: center;"
         ></ion-input>
       </ion-item>
-
-      <ion-item (mouseenter)='onEntroMouse()'  (mouseleave)='onSalioMouse()' >
-        <ion-label>
-          Password:
-        </ion-label>
+      <ion-item>
+        <ion-icon name="lock-closed"></ion-icon>
         <ion-input
-          placeholder="*********"
+          placeholder="**"
           type="password"
           [(ngModel)]="user.password"
+          style="text-align: center;"
         ></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col style="text-align: center">
-      <ion-button shape="round" (click)="onIniciar()"
-        >Iniciar Sesion</ion-button
-      >
-      <br />
+    <ion-col style="text-align: center;" size="8">
+      <ion-button shape="round" expand="block" (click)="onIniciar()">
+        Iniciar Sesion
+      </ion-button>
+    </ion-col>
+    <ion-col style="text-align: center;" size="4">
       <ion-button
         shape="round"
+        expand="block"
+        fill="outline"
         [routerLink]="['/frm-registro']"
-        routerLinkActive="router-link-active"
-        >Registrarse</ion-button
       >
+        Registrarse
+      </ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

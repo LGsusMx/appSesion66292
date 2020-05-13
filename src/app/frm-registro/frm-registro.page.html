@@ -1,37 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registro</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-title>Registro</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <img src="https://miro.medium.com/max/2800/1*9iZzrgfMKngf18KDIUYKRw.jpeg" />
+  </ion-card>
+
   <ion-row>
-    <ion-col style="text-align: center; ">
+    <ion-col style="text-align: center;">
+      <h1>Registre sus datos</h1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="text-align: center;">
       <ion-item>
-        <ion-label>
-          Correo
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="user.correo"></ion-input>
+        <ion-icon name="mail"></ion-icon>
+        <ion-input
+          type="text"
+          [(ngModel)]="user.correo"
+          placeholder="example@domain.com"
+          style="text-align: center;"
+        ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>
-          Password
-        </ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        <ion-icon name="lock-closed"></ion-icon>
+        <ion-input
+          type="password"
+          [(ngModel)]="user.password"
+          placeholder="**"
+          style="text-align: center;"
+        ></ion-input>
       </ion-item>
-      </ion-col>
-      </ion-row>
-    
-    <ion-row>
-      <ion-col style="text-align: center">
-        <ion-button shape="round" (click)='onRegistrar()'>Registrar</ion-button>
-        <br />
-        <ion-button
-          shape="round"
-          [routerLink]="['/home']"
-          routerLinkActive="router-link-active"
-          >Iniciar Sesion</ion-button
-        >
-      </ion-col>
-    </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-button shape="round" (click)="onRegistrar()" expand="block"
+    >Registrar cuenta</ion-button
+  >
 </ion-content>

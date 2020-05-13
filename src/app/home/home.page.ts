@@ -23,10 +23,4 @@ export class HomePage {
       this.router.navigateByUrl('frm-inicio');
     }
   }
-  onEntroMouse(){
-    this.isSaucex = false;
-  }
-  onSalioMouse(){
-    this.isSaucex = true;
-  }
 }
