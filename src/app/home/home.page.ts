@@ -18,9 +18,9 @@ export class HomePage {
   async onIniciar(){
     const respuesta = await this.authSvc.onIniciar(this.user);
     if (respuesta) {
-      localStorage.setItem('user', JSON.stringify(respuesta.user.email));
-      localStorage.setItem('cUId', JSON.stringify(respuesta.user.uid));
-      this.router.navigateByUrl('frm-inicio');
+      //localStorage.setItem('user', JSON.stringify(respuesta.user.email));
+      //localStorage.setItem('cUId', JSON.stringify(respuesta.user.uid));
+      this.router.navigateByUrl('covid-general');
     }
   }
 }

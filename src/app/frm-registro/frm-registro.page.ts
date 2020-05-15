@@ -19,8 +19,8 @@ export class FrmRegistroPage implements OnInit {
     try {
       const user = await this.authSvc.onRegistrar(this.user);
       if (user) {
-        localStorage.setItem('user', JSON.stringify(user.user.email));
-        localStorage.setItem('cUId', JSON.stringify(user.user.uid));
+        // localStorage.setItem('user', JSON.stringify(user.user.email));
+        // localStorage.setItem('cUId', JSON.stringify(user.user.uid));
         const alert = await this.alertCont.create({
           header: 'Aviso',
           subHeader: 'Registro Exitoso',
@@ -28,7 +28,7 @@ export class FrmRegistroPage implements OnInit {
           buttons: ['OK']
         });
         await alert.present();
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('covid-general');
       }
      } catch (e) {
        //console.log('Error al dar de alta usuario', e);

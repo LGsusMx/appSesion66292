@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'objeto-alteracion/:id/:modificacion',
     loadChildren: () => import('./objeto-alteracion/objeto-alteracion.module').then( m => m.ObjetoAlteracionPageModule)
+  },  {
+    path: 'covid-general',
+    loadChildren: () => import('./covid-general/covid-general.module').then( m => m.CovidGeneralPageModule)
   },
+
 ];
 
 @NgModule({

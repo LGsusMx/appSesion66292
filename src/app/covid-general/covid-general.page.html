@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{actual.Country}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Pais a mostrar:</ion-label>
+    <ion-select (ionChange)="onChange($event)" placeholder="Select one">
+      <ion-select-option *ngFor="let elemento of paises">
+        {{elemento.Country}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Actualizado: {{actual.Date}} </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-label>Nuevos casos: {{actual.NewConfirmed}} </ion-label>
+      <p></p>
+      <ion-label>Nuevos desesos: {{actual.NewDeaths}}</ion-label>
+      <p></p>
+      <ion-label>Nuevos recuperados: {{actual.NewRecovered}}</ion-label>
+      <p></p>
+      <ion-label>Total confirmados: {{actual.TotalConfirmed}}</ion-label>
+      <p></p>
+      <ion-label>Total muertes: {{actual.TotalDeaths}}</ion-label>
+      <p></p>
+      <ion-label>Total recuperados: {{actual.TotalRecovered}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
