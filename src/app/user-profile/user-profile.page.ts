@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { usuario } from '../shared/usuario.class';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -8,14 +8,13 @@ import { AuthService } from '../service/auth.service';
   templateUrl: './user-profile.page.html',
   styleUrls: ['./user-profile.page.scss'],
 })
-export class UserProfilePage implements OnInit {
+export class UserProfilePage implements AfterViewInit {
   collection = 'usuarios';
   CUserName = '-----------';
   cUId;
   user: usuario = new usuario();
   constructor(private router: Router, private afAuth: AngularFireAuth, private firebaseService: AuthService) { }
-
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.cUId = localStorage.getItem('cUId');
     this.cUId = this.cUId.replace('"', '');
     this.cUId = this.cUId.replace('"', '');
@@ -32,11 +31,13 @@ export class UserProfilePage implements OnInit {
       }
       this.user.correo = localStorage.getItem('user');
     });
-
   }
+
+
   onSalir() {
     this.afAuth.auth.signOut();
     localStorage.removeItem('user');
+    localStorage.removeItem('cUId');
     this.router.navigateByUrl('/home');
   }
   onGuardar() {

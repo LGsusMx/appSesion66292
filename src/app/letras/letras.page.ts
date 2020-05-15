@@ -24,6 +24,7 @@ export class LetrasPage implements AfterViewInit {
     this.cUId = localStorage.getItem('cUId');
     this.cUId = this.cUId.replace('"', '');
     this.cUId = this.cUId.replace('"', '');
+
     this.firebaseService.read_Onestudents(this.collection, this.cUId).subscribe((result) => {
       if (result.payload.get('nombre') !== undefined) {
         this.CUserName = result.payload.data()['nombre'];

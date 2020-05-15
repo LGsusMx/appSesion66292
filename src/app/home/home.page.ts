@@ -16,10 +16,10 @@ export class HomePage {
   constructor(private authSvc: AuthService, private router: Router) {}
 
   async onIniciar(){
-    const user = await this.authSvc.onIniciar(this.user);
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user.user.email));
-      localStorage.setItem('cUId', JSON.stringify(user.user.uid));
+    const respuesta = await this.authSvc.onIniciar(this.user);
+    if (respuesta) {
+      localStorage.setItem('user', JSON.stringify(respuesta.user.email));
+      localStorage.setItem('cUId', JSON.stringify(respuesta.user.uid));
       this.router.navigateByUrl('frm-inicio');
     }
   }
